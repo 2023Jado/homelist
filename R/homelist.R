@@ -28,13 +28,14 @@ homelist <- function(file_path,lon, lat, groups,
     names(dfile2) <- c("x", "y", "id")
 
     # Check if package 'A' is installed
-    if (!requireNamespace("A", quietly = TRUE)) {
+    if (!requireNamespace(c("sp", "sf", "ade4", "adehabitatMA",
+                            "CircStats", "adehabitatLT", "adehabitatHR"), quietly = TRUE)) {
 
       # If not installed, install package "Package Name"
       install.packages(c("sp", "sf", "ade4", "adehabitatMA",
                          "CircStats", "adehabitatLT", "adehabitatHR"))
 
-      # Load the newly installed package
+      # Load the newly installed packages
       library(sp)
       library(sf)
       library(ade4)
@@ -44,7 +45,7 @@ homelist <- function(file_path,lon, lat, groups,
       library(adehabitatHR)
     } else {
 
-      # If already installed, simply load the package
+      # If already installed, simply load the packages
     library(sp)
     library(sf)
     library(ade4)
