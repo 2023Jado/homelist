@@ -27,6 +27,24 @@ homelist <- function(file_path,lon, lat, groups,
     dfile2 <- dfile[, c(lon, lat, groups)]
     names(dfile2) <- c("x", "y", "id")
 
+    # Check if package 'A' is installed
+    if (!requireNamespace("A", quietly = TRUE)) {
+
+      # If not installed, install package "Package Name"
+      install.packages(c("sp", "sf", "ade4", "adehabitatMA",
+                         "CircStats", "adehabitatLT", "adehabitatHR"))
+
+      # Load the newly installed package
+      library(sp)
+      library(sf)
+      library(ade4)
+      library(adehabitatMA)
+      library(CircStats)
+      library(adehabitatLT)
+      library(adehabitatHR)
+    } else {
+
+      # If already installed, simply load the package
     library(sp)
     library(sf)
     library(ade4)
@@ -34,6 +52,7 @@ homelist <- function(file_path,lon, lat, groups,
     library(CircStats)
     library(adehabitatLT)
     library(adehabitatHR)
+    }
 
     # Setting names to the outputs
     homerange = c()
